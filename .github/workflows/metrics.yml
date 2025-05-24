@@ -1,0 +1,19 @@
+name: Metrics
+
+on:
+  schedule: [{ cron: "0 0 * * *" }]  # executa uma vez por dia
+  workflow_dispatch:
+
+jobs:
+  github-metrics:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: lowlighter/metrics@latest
+        with:
+          # Seu usuário GitHub
+          user: rfinguer
+          # Seu token GitHub, configurado no passo 3
+          token: ${{ secrets.METRICS_TOKEN }}
+          # Plugins desejados
+          plugin_contributors: yes
+          plugin_contributors_repositories: weg/controltowerweg
