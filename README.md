@@ -86,7 +86,7 @@ Me chamo Rodrigo Junior Finguer, tenho 30 anos e sou do Mato Grosso. Sou Engenhe
 
 ### 📊 Estatísticas
 
-![Metrics](https://github.com/rfinguer/rfinguer/blob/master/github-metrics.svg)
+![Metrics](https://github.com/rfinguer/rfinguer/blob/main/github-metrics.svg)
 
 <p>
   <img 
