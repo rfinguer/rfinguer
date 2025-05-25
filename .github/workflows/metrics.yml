@@ -1,9 +1,8 @@
 name: Metrics
 
 on:
-  schedule:
-    - cron: "0 0 * * *"  # Roda todo dia à meia-noite UTC
-  workflow_dispatch:      # Permite rodar manualmente pelo GitHub
+  schedule: [{ cron: "0 0 * * *" }]  # roda todo dia à meia-noite
+  workflow_dispatch:                # permite rodar manualmente
 
 jobs:
   github-metrics:
@@ -11,39 +10,22 @@ jobs:
     steps:
       - uses: lowlighter/metrics@latest
         with:
-          # Token criado como secret no repositório rfinguer (precisa permissão de leitura no controltowerweg)
+          # Use o token secreto que você adicionou
           token: ${{ secrets.METRICS_TOKEN }}
 
-          # Usuário que você quer puxar estatísticas (não seu repositório, mas seu perfil de trabalho)
+          # Configuração básica
           user: finguer
+          template: classic
 
-          # Repositório específico
+          # De qual repositório puxar
           repositories: controltowerweg
 
-          # Tema visual bonito
-          template: classic
+          # Saída do SVG
+          filename: github-metrics.svg
+
+          # Plugins que queremos
           base: header, repositories, metadata
-
-          # Mostra linguagens mais usadas no repositório
           plugin_languages: yes
-          plugin_languages_indepth: yes
-          plugin_languages_sections: most-used, recently-used
-          plugin_languages_repositories: controltowerweg
-
-          # Mostra atividades recentes (commits, issues, PRs)
-          plugin_activity: yes
-          plugin_activity_limit: 5
-          plugin_activity_load: 300
-
-          # Contribuições e insights
           plugin_contributors: yes
-          plugin_contributors_contributions: yes
-
-          # Estatísticas gerais
-          plugin_lines: yes
-          plugin_followup: yes
-          plugin_repositories: yes
-
-          # Estética (opcional)
-          config_timezone: America/Sao_Paulo
-          config_order: base.header, repositories, metadata, languages, activity, contributors, lines, followup, repositories
+          plugin_achievements: yes
+          plugin_traffic: yes
